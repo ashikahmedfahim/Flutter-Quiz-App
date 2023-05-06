@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 
 class HomeScreen extends StatelessWidget {
-  const HomeScreen({Key? key}) : super(key: key);
+  const HomeScreen(this.changeScreen, {Key? key}) : super(key: key);
+
+  final void Function(String screenName) changeScreen;
 
   @override
   Widget build(BuildContext context) {
@@ -29,7 +31,9 @@ class HomeScreen extends StatelessWidget {
             height: 30,
           ),
           OutlinedButton.icon(
-            onPressed: () {},
+            onPressed: () {
+              changeScreen('questions-screen');
+            },
             style: OutlinedButton.styleFrom(
               foregroundColor: Colors.white,
             ),
