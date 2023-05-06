@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:quiz_app/home_screen.dart';
 import 'package:quiz_app/questions_screen.dart';
+import 'package:quiz_app/results_screen.dart';
 
 class Quiz extends StatefulWidget {
   const Quiz({Key? key}) : super(key: key);
@@ -28,7 +29,10 @@ class _QuizState extends State<Quiz> {
     Widget currentScreen = HomeScreen(changeScreen);
 
     if (activeWidget == 'questions-screen') {
+      selectedAnswers.clear();
       currentScreen = QuestionsScreen(changeScreen, addToSelectedAnswer);
+    } else if (activeWidget == 'results-screen') {
+      currentScreen = ResultsScreen(changeScreen, selectedAnswers);
     }
 
     return MaterialApp(

@@ -25,7 +25,8 @@ class _QuestionsScreenState extends State<QuestionsScreen> {
         currentQuestionIndex++;
       });
     } else {
-      widget.changeScreen('home-screen');
+      currentQuestionIndex = 0;
+      widget.changeScreen('results-screen');
     }
   }
 
@@ -50,9 +51,9 @@ class _QuestionsScreenState extends State<QuestionsScreen> {
               ),
             ),
             const SizedBox(height: 30),
-            ...currentQuestion.getShuffledAnswers().map(
-                  (e) => OptionButton(e, answerQuestion),
-                )
+            ...currentQuestion.shuffledAnswers.map(
+              (e) => OptionButton(e, answerQuestion),
+            )
           ],
         ),
       ),
